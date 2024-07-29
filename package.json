@@ -1,0 +1,41 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=dev ihos s",
+    "build:test1": "NODE_ENV=test1 ihos b",
+    "build:test2": "NODE_ENV=test2 ihos b",
+    "build:test3": "NODE_ENV=test3 ihos b",
+    "build:test4": "NODE_ENV=test4 ihos b",
+    "build:integration": "NODE_ENV=integration ihos b",
+    "build:pre": "NODE_ENV=pre ihos b",
+    "build:online": "NODE_ENV=online ihos b",
+    "env:test1": "npm run build:test1 && ihos deploy",
+    "env:test2": "npm run build:test2 && ihos deploy",
+    "env:test3": "npm run build:test3 && ihos deploy",
+    "env:test4": "npm run build:test4 && ihos deploy",
+    "env:integration": "npm run build:integration && ihos deploy",
+    "env:pre": "npm run build:pre && ihos deploy",
+    "env:online": "npm run build:online && ihos deploy",
+    "precommit": "lint-staged",
+    "prepush": "ihos deploy"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "ihos lint",
+      "git add ."
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.5.4",
+    "husky": "^0.14.3"
+  },
+  "devDependencies": {
+    "lint-staged": "^7.2.0"
+  }
+}
